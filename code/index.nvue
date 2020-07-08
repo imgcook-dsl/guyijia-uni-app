@@ -1,0 +1,73 @@
+<template>
+  <view class="mod"
+    ><view class="box"
+      ><image
+        class="hd"
+        src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f42af9e0c0cc11eaa4b313d81cff59e5.png"
+      />
+      <text class="bd" :lines="1">手机号登录/注册</text>
+      <text class="submain" :lines="1">未注册手机验证后创建新账号</text>
+      <view class="row"
+        ><image
+          class="icon"
+          src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f3d2a0b0c0cc11ea811caf12cdbe95af.png"/>
+        <view class="outer"
+          ><view class="wrap"
+            ><text class="txt" :lines="1">+</text>
+            <text class="num" :lines="1">86</text> <view class="color" /><text
+              class="phone"
+              :lines="1"
+              >15687810919</text
+            > </view
+          ><view class="colorDiv"/></view></view
+      ><view class="row1"
+        ><view class="block"
+          ><image
+            class="icon_2"
+            src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f3f6ca80c0cc11ea8971ed9335965658.png"
+          />
+          <text class="num_2" :lines="1">156878</text> </view
+        ><view class="tagWrap"
+          ><text class="tag" :lines="1">48 秒</text>
+        </view></view
+      ><view class="row2" /><view class="row3"
+        ><text class="tag_2" :lines="1">登录</text> </view
+      ><text class="row4" :lines="1">账号密码登录</text>
+      <view class="row5"
+        ><view class="container"
+          ><view class="color_2" /><image
+            class="largeIcon"
+            src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f4a951a0c0cc11ea9b3c37aa03fbe4d5.png"
+          /> </view
+        ><image
+          class="dot"
+          src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f4556540c0cc11eaa6ca11dfe12b005d.png"
+        />
+        <text class="word" :lines="1">第三方登录</text>
+        <view class="outer_2"
+          ><view class="colorDiv_2" /><image
+            class="largeIcon_2"
+            src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f4d01380c0cc11ea950197532bf683ee.png"
+          /> </view
+        ><image
+          class="dot_2"
+          src="https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/f47ff7b0c0cc11ea9a9f3b0cf1bc41d2.png"
+        /> </view
+      ><view class="main"
+        ><text class="text" :lines="1">注册代表阅读并同意</text>
+        <text class="txt_2" :lines="1">《骨医家用户协议》</text>
+      </view></view
+    ></view
+  >
+</template>
+<script>
+export default {
+  data() {
+    return {
+      constants: {}
+    };
+  },
+  methods: {}
+};
+</script>
+<style src="./index.css" scoped></style>

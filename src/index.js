@@ -43,6 +43,9 @@ module.exports = function(schema, option) {
     'componentWillUnmount': 'beforeDestroy'
   }
 
+  // nvue 不支持的样式
+  const noNvueStyles = ['display', 'max-width', 'white-space', 'letter-spacing', 'box-sizing'];
+
   const width = option.responsive.width || 750;
   const viewportWidth = option.responsive.viewportWidth || 375;
 
@@ -99,7 +102,22 @@ module.exports = function(schema, option) {
         styleData.push(`${_.kebabCase(key)}: ${value}`);
       }
     }
-    return styleData.join(';');
+    // return styleData.join(';');
+
+
+    // 为nvue不支持的样式添加条件编译
+    const nvueStyleData = [];
+    for (let key of styleData) {
+      const arr = key.split(':');
+      const k = arr[0];
+      if (noNvueStyles.indexOf(k) != -1) {
+        nvueStyleData.push(`\n/* #ifndef APP-NVUE */\n ${key}; \n/* #endif */`);
+      } else {
+        nvueStyleData.push(key + ';');
+      }
+    }
+
+    return nvueStyleData.join(' ');
   }
 
   // parse function, return params and content
@@ -404,7 +422,7 @@ module.exports = function(schema, option) {
   return {
     panelDisplay: [
       {
-        panelName: `index.vue`,
+        panelName: `${schema.fileName}.nvue`,
         panelValue: prettier.format(`
           <template>
               ${template}
@@ -423,11 +441,14 @@ module.exports = function(schema, option) {
               ${lifeCycles.join(',\n')}
             }
           </script>
-          <style scoped>
-            ${styles2prx.join('\n')}
-          </style>
+          <style src="./${schema.fileName}.css" scoped></style>
         `, prettierOpt),
         panelType: 'vue',
+      },
+      {
+        panelName: `${schema.fileName}.css`,
+        panelValue: prettier.format(styles2prx.join('\n'), { parser: 'css' }),
+        panelType: 'css'
       },
     ],
     renderData: {
